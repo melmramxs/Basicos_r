@@ -1,0 +1,142 @@
+---
+title: "Basicosr_A01643711"
+author: "Melanie"
+date: "2024-01-11"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Ejercicio 1
+
+##### Crear un vector x con los datos 10, 72, 18, −11, 6, −34, 291
+
+```{r}
+x<-c(10,72,18,-11,6,-34,291)
+
+print(x)
+```
+
+
+#### Ejercicio 2
+
+##### Calcula estadísticas simples del vector x. Calcular su media, desviación estándar y varianza. Crear un vector llamado est.x donde se guarden los 3 estadísticos.
+
+```{r}
+#Media
+media<-sum(x)/length(x)
+
+#Varianza
+dif_cuad<-(x-media)**2
+
+var<-sum(dif_cuad)/(length(x)-1)
+
+#Desv. estandar
+desv_est<-var**(1/2)
+
+est.x<-c("Media"=media,"Varianza"=var,"Desviacion estandar"=desv_est)
+est.x
+```
+#### Ejercicio 3
+##### Escribe un programa R para crear una secuencia de números del 10 al 80 y encuentra la media de los números del 25 al 95 y la suma de los números del 51 al 93.
+```{r}
+#Creacion de la secuencia
+secuencia<-10:80
+secuencia
+
+
+#Media 25:95
+media_25_95=sum(25:95)/length(25:95)
+media_25_95
+
+#Suma 51:93
+suma_51_93=sum(51:93)
+suma_51_93
+```
+#### Ejercicio 4
+##### Escribe un programa R para crear un vector que contenga 10 valores enteros aleatorios entre -100 y +500. Tip: Revisa la función sample().
+```{r}
+rdm=sample(-100:500,10,replace = TRUE) #sample() para generar numeros aleatorios dentro de un rango
+rdm
+```
+#### Ejercicio 5
+##### Escribe un programa R para obtener los primeros 10 números de Fibonacci.
+```{r}
+fb <- numeric(10) #numeric() genera un vector vacio
+fb[1] <- fb[2] <- 1
+
+for (i in 3:10) { #Se comienza desde el espacio sin numero asignado (3)
+  fb[i]<-fb[i-2]+fb[i-1]
+  print(fb)
+}
+```
+#### Ejercicio 6
+##### Escribe un programa R para encontrar el valor máximo y mínimo de un vector dado sin utilizar las funciones base de max() y min(). Debes probar con los siguientes números:
+#####     a. c(1, -20, -3, 40, -5, 60)
+#####     b. c(10, -20, 30, -40, 50, -60)
+```{r}
+max_min<-function(f){
+#MAXIMO
+  max<-f[1]
+  for (j in f){
+    if (j>max){
+      max<-j
+    }
+  }
+
+#MINIMO
+  min<-f[1]
+  for (k in f){
+    if (k<min){
+      min<-k
+    }
+  }
+cat("El maximo de la funcion es",max,"y el minimo es",min,"\n")  
+}
+
+a<-c(1,-20,-3,40,-5,60)
+max_min(a)
+
+b<-c(10,-20,30,-40,50,-60)
+max_min(b)
+```
+
+#### Ejercicio 7
+##### Escribe una función de R llamada “multiplica” para multiplicar dos vectores de tipo entero y longitud n, de la misma longitud ambos.
+```{r}
+
+multiplica<-function(x,y){
+ if (length(x)==length(y)){
+    res=x*y
+    res
+ }
+}
+
+u=c(20,10)
+v=c(3,4)
+multiplica(u,v)
+```
+#### Ejercicio 8  
+##### Escribe una función de R llamada “cuenta” para contar cuántas veces aparece un valor específico en un vector dado.
+```{r}
+cuenta<-function(x,valor){
+  cont<-0
+  for (l in m){
+    if (l==valor){
+      cont<-cont+1
+    }
+  }
+  cont
+}
+
+m<-c(10, 2, 10, 7, 2, 7, 2,7)
+valor<-2
+
+cuenta(m,valor)
+```
+
+#### Ejercicio 9
+##### Escribe una función de R llamada “enésimo” para extraer cada enésimo elemento de un vector dado.
